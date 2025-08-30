@@ -86,14 +86,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /d C:\LinkList\test\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\LinkList\test\build\CMakeFiles C:\LinkList\test\build\LINKLIST\\CMakeFiles\progress.marks
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LINKLIST/all
+	cd /d C:\LinkList\test\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\LinkList\test\build\CMakeFiles C:\LinkList\test\build\LinkList\\CMakeFiles\progress.marks
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\LinkList\test\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LINKLIST/clean
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList/clean
 .PHONY : clean
 
 # The main clean target
@@ -102,12 +102,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LINKLIST/preinstall
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LINKLIST/preinstall
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -116,42 +116,42 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-LINKLIST/CMakeFiles/Linklist.dir/rule:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LINKLIST/CMakeFiles/Linklist.dir/rule
-.PHONY : LINKLIST/CMakeFiles/Linklist.dir/rule
+LinkList/CMakeFiles/LinkList.dir/rule:
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList/CMakeFiles/LinkList.dir/rule
+.PHONY : LinkList/CMakeFiles/LinkList.dir/rule
 
 # Convenience name for target.
-Linklist: LINKLIST/CMakeFiles/Linklist.dir/rule
-.PHONY : Linklist
+LinkList: LinkList/CMakeFiles/LinkList.dir/rule
+.PHONY : LinkList
 
 # fast build rule for target.
-Linklist/fast:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/build
-.PHONY : Linklist/fast
+LinkList/fast:
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/build
+.PHONY : LinkList/fast
 
-Linklist.obj: Linklist.cpp.obj
-.PHONY : Linklist.obj
+LinkList.obj: LinkList.cpp.obj
+.PHONY : LinkList.obj
 
 # target to build an object file
-Linklist.cpp.obj:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/Linklist.cpp.obj
-.PHONY : Linklist.cpp.obj
+LinkList.cpp.obj:
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.obj
+.PHONY : LinkList.cpp.obj
 
-Linklist.i: Linklist.cpp.i
-.PHONY : Linklist.i
+LinkList.i: LinkList.cpp.i
+.PHONY : LinkList.i
 
 # target to preprocess a source file
-Linklist.cpp.i:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/Linklist.cpp.i
-.PHONY : Linklist.cpp.i
+LinkList.cpp.i:
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.i
+.PHONY : LinkList.cpp.i
 
-Linklist.s: Linklist.cpp.s
-.PHONY : Linklist.s
+LinkList.s: LinkList.cpp.s
+.PHONY : LinkList.s
 
 # target to generate assembly for a file
-Linklist.cpp.s:
-	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/Linklist.cpp.s
-.PHONY : Linklist.cpp.s
+LinkList.cpp.s:
+	cd /d C:\LinkList\test\build && $(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.s
+.PHONY : LinkList.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Linklist
-	@echo ... Linklist.obj
-	@echo ... Linklist.i
-	@echo ... Linklist.s
+	@echo ... LinkList
+	@echo ... LinkList.obj
+	@echo ... LinkList.i
+	@echo ... LinkList.s
 .PHONY : help
 
 

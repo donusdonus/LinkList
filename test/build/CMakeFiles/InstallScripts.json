@@ -2,7 +2,7 @@
 	"InstallScripts" : 
 	[
 		"C:/LinkList/test/build/cmake_install.cmake",
-		"C:/LinkList/test/build/LINKLIST/cmake_install.cmake"
+		"C:/LinkList/test/build/LinkList/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

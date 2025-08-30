@@ -129,17 +129,17 @@ app/fast:
 .PHONY : app/fast
 
 #=============================================================================
-# Target rules for targets named Linklist
+# Target rules for targets named LinkList
 
 # Build rule for target.
-Linklist: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Linklist
-.PHONY : Linklist
+LinkList: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList
+.PHONY : LinkList
 
 # fast build rule for target.
-Linklist/fast:
-	$(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/build
-.PHONY : Linklist/fast
+LinkList/fast:
+	$(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/build
+.PHONY : LinkList/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -173,7 +173,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Linklist
+	@echo ... LinkList
 	@echo ... app
 	@echo ... main.obj
 	@echo ... main.i

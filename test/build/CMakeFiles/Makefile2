@@ -63,47 +63,47 @@ CMAKE_BINARY_DIR = C:\LinkList\test\build
 
 # The main recursive "all" target.
 all: CMakeFiles/app.dir/all
-all: LINKLIST/all
+all: LinkList/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/app.dir/codegen
-codegen: LINKLIST/codegen
+codegen: LinkList/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall: LINKLIST/preinstall
+preinstall: LinkList/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/app.dir/clean
-clean: LINKLIST/clean
+clean: LinkList/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory LINKLIST
+# Directory level rules for directory LinkList
 
 # Recursive "all" directory target.
-LINKLIST/all: LINKLIST/CMakeFiles/Linklist.dir/all
-.PHONY : LINKLIST/all
+LinkList/all: LinkList/CMakeFiles/LinkList.dir/all
+.PHONY : LinkList/all
 
 # Recursive "codegen" directory target.
-LINKLIST/codegen: LINKLIST/CMakeFiles/Linklist.dir/codegen
-.PHONY : LINKLIST/codegen
+LinkList/codegen: LinkList/CMakeFiles/LinkList.dir/codegen
+.PHONY : LinkList/codegen
 
 # Recursive "preinstall" directory target.
-LINKLIST/preinstall:
-.PHONY : LINKLIST/preinstall
+LinkList/preinstall:
+.PHONY : LinkList/preinstall
 
 # Recursive "clean" directory target.
-LINKLIST/clean: LINKLIST/CMakeFiles/Linklist.dir/clean
-.PHONY : LINKLIST/clean
+LinkList/clean: LinkList/CMakeFiles/LinkList.dir/clean
+.PHONY : LinkList/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/app.dir
 
 # All Build rule for target.
-CMakeFiles/app.dir/all: LINKLIST/CMakeFiles/Linklist.dir/all
+CMakeFiles/app.dir/all: LinkList/CMakeFiles/LinkList.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\LinkList\test\build\CMakeFiles --progress-num=3,4 "Built target app"
@@ -132,36 +132,36 @@ CMakeFiles/app.dir/clean:
 .PHONY : CMakeFiles/app.dir/clean
 
 #=============================================================================
-# Target rules for target LINKLIST/CMakeFiles/Linklist.dir
+# Target rules for target LinkList/CMakeFiles/LinkList.dir
 
 # All Build rule for target.
-LINKLIST/CMakeFiles/Linklist.dir/all:
-	$(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/depend
-	$(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\LinkList\test\build\CMakeFiles --progress-num=1,2 "Built target Linklist"
-.PHONY : LINKLIST/CMakeFiles/Linklist.dir/all
+LinkList/CMakeFiles/LinkList.dir/all:
+	$(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/depend
+	$(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\LinkList\test\build\CMakeFiles --progress-num=1,2 "Built target LinkList"
+.PHONY : LinkList/CMakeFiles/LinkList.dir/all
 
 # Build rule for subdir invocation for target.
-LINKLIST/CMakeFiles/Linklist.dir/rule: cmake_check_build_system
+LinkList/CMakeFiles/LinkList.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\LinkList\test\build\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LINKLIST/CMakeFiles/Linklist.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 LinkList/CMakeFiles/LinkList.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\LinkList\test\build\CMakeFiles 0
-.PHONY : LINKLIST/CMakeFiles/Linklist.dir/rule
+.PHONY : LinkList/CMakeFiles/LinkList.dir/rule
 
 # Convenience name for target.
-Linklist: LINKLIST/CMakeFiles/Linklist.dir/rule
-.PHONY : Linklist
+LinkList: LinkList/CMakeFiles/LinkList.dir/rule
+.PHONY : LinkList
 
 # codegen rule for target.
-LINKLIST/CMakeFiles/Linklist.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\LinkList\test\build\CMakeFiles --progress-num=1,2 "Finished codegen for target Linklist"
-.PHONY : LINKLIST/CMakeFiles/Linklist.dir/codegen
+LinkList/CMakeFiles/LinkList.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\LinkList\test\build\CMakeFiles --progress-num=1,2 "Finished codegen for target LinkList"
+.PHONY : LinkList/CMakeFiles/LinkList.dir/codegen
 
 # clean rule for target.
-LINKLIST/CMakeFiles/Linklist.dir/clean:
-	$(MAKE) $(MAKESILENT) -f LINKLIST\CMakeFiles\Linklist.dir\build.make LINKLIST/CMakeFiles/Linklist.dir/clean
-.PHONY : LINKLIST/CMakeFiles/Linklist.dir/clean
+LinkList/CMakeFiles/LinkList.dir/clean:
+	$(MAKE) $(MAKESILENT) -f LinkList\CMakeFiles\LinkList.dir\build.make LinkList/CMakeFiles/LinkList.dir/clean
+.PHONY : LinkList/CMakeFiles/LinkList.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

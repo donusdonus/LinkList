@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libLinklist.a"
+  "libLinkList.a"
 )

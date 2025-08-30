@@ -1,5 +1,6 @@
-CMakeFiles/app.dir/main.cpp.obj: C:\LinkList\test\main.cpp \
- C:/LinkList/LinkList.h C:/msys64/mingw32/include/stdio.h \
+LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.obj: \
+ C:\LinkList\LinkList.cpp C:\LinkList\LinkList.h \
+ C:/msys64/mingw32/include/stdio.h \
  C:/msys64/mingw32/include/corecrt_stdio_config.h \
  C:/msys64/mingw32/include/corecrt.h C:/msys64/mingw32/include/_mingw.h \
  C:/msys64/mingw32/include/_mingw_mac.h \
