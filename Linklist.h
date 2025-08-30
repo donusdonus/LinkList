@@ -200,8 +200,8 @@ public:
     bool Remove(size_t index)
     {
         Items<T>** cur = &Lists;
-        Items<T>** prev = nullptr;
-        Items<T>** next = nullptr;
+        Items<T>* prev = nullptr;
+        Items<T>* next = nullptr;
 
         size_t cnt = 0;  
         bool   found = false;
@@ -227,28 +227,44 @@ public:
             cnt+=1;
         }
 
-        prev = available(&(*cur)->_prev)? &(*cur)->_prev : nullptr;
-        next = available(&(*cur)->_next)? &(*cur)->_next : nullptr;
+        prev = available(&(*cur)->_prev)? (*cur)->_prev : nullptr;
+        next = available(&(*cur)->_next)? (*cur)->_next : nullptr;
 
         // case last
-        if(available(prev) && !available(next))
+        if(available(&prev) && !available(&next))
         {
                Free((*cur)->item);
-               Free((*cur));
+               (*cur)->item = nullptr;
+               (*cur)->_next = nullptr;
+               (*cur)->_prev = nullptr;
+               Free(*cur);
+               *cur = nullptr;
+
+               prev->_next = nullptr;
         }
         // case mid
-        else if(available(prev) && available(next))
+        else if(available(&prev) && available(&next))
         {
                Free((*cur)->item);
-               Free((*cur));
+               (*cur)->item = nullptr;
+               (*cur)->_next = nullptr;
+               (*cur)->_prev = nullptr;
+               Free(*cur);
+               *cur = nullptr;
 
-               (*prev)->_next = *next;
-               (*next)->_prev = *prev;
+               prev->_next = next;
+               next->_prev = prev;
         }
         // case first
-        else if(!available(prev) && available(next))
+        else if(!available(&prev) && available(&next))
         {
-
+               Free(&Lists->item);
+               Lists->item = nullptr;
+               Lists->_next = nullptr;
+               Lists->_prev = nullptr;
+               Free(Lists);
+               Lists = nullptr;
+               Lists = next;
         }
         else 
         {
