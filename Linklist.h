@@ -1,10 +1,12 @@
 #ifndef LINKLIST_H
 #define LINKLIST_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdint.h>
+#include<functional>
+
+using namespace std;
 
 //#define ARCH_16Bit
 #define ARCH_32Bit
@@ -31,12 +33,15 @@ struct Items
     Items* _prev;
 };
 
+
 template<typename T>
 class LinkList
 {
 private:
     /* data */
     MemorySource MemSource;
+    typedef void (*filter)(T*);
+    typedef std::function<void (T*)> func_filter;
 
 
     /* private function */
@@ -116,33 +121,42 @@ private:
 
     void cpy(void *des ,void *src,size_t size)
     {
-        uint8_t *p = (uint8_t*)src;
+        uint8_t *s = (uint8_t*)src;
+        uint8_t *d = (uint8_t*)des;
 
         #ifdef ARCH_32Bit
         while(size >= 4)
         { 
-            *(uint32_t*)des = *(uint32_t*)p ;
-            p+=4;
-            des+=4;
+            *(uint32_t*)d = *(uint32_t*)s ;
+            s+=4;
+            d+=4;
             size-=4;
         }
         #endif
 
-        #ifdef ARCH_32Bit || ARCH_16Bit
-        while(size >= 2)
-        { 
-            *(uint16_t*)des = *(uint16_t*)p ;
-            p+=2;
-            des+=2;
-            size-=2;
-        }
+        #ifdef ARCH_32Bit
+            while(size >= 2)
+            { 
+                *(uint16_t*)d = *(uint16_t*)s ;
+                s+=2;
+                d+=2;
+                size-=2;
+            }
+        #elif ARCH_16Bit
+            while(size >= 2)
+            { 
+                *(uint16_t*)d = *(uint16_t*)s ;
+                s+=2;
+                d+=2;
+                size-=2;
+            }
         #endif
 
         while(size >= 1)
         { 
-            *(uint8_t*)des = *(uint8_t*)p ;
-            p+=1;
-            des+=1;
+            *(uint8_t*)d = *(uint8_t*)s ;
+            s+=1;
+            d+=1;
             size-=1;
         }
 
@@ -153,7 +167,7 @@ public:
 
     LinkList(){SetMemory(MemorySource::RAM);}
     LinkList(MemorySource type = MemorySource::RAM){SetMemory(type);}
-    ~LinkList(){}
+    ~LinkList(){ Clear(); }
 
     void SetMemory(MemorySource type)
     {
@@ -196,6 +210,8 @@ public:
     {
         return count_member(&Lists);
     }
+
+    size_t Size(){ return Count()*sizeof(Items<T>);}
 
     bool Remove(size_t index)
     {
@@ -296,6 +312,36 @@ public:
         return nullptr;
     }
 
+    void Find(func_filter filter = nullptr)
+    {
+        Items<T>** cur = &Lists;   
+        while (available(cur))
+        {
+            if(filter != nullptr)
+                filter((*cur)->item);
+               // func((*cur)->item);
+            cur = &(*cur)->_next;
+        }  
+    }
+
+    void Clear()
+    {
+        Items<T>** cur = &Lists;
+        Items<T>** del = nullptr;
+
+        while (available(cur))
+        {
+            del = cur;
+            cur = &(*cur)->_next;
+            
+            Free((*del)->item);
+            (*del)->item = nullptr;
+            (*del)->_next = nullptr;
+            (*del)->_prev = nullptr;
+            Free(*del);
+            *del = nullptr;     
+        } 
+    }
     
 };
 

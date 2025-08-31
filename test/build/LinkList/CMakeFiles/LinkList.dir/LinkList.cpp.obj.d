@@ -1,5 +1,5 @@
 LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.obj: \
- C:\LinkList\LinkList.cpp C:\LinkList\LinkList.h \
+ D:\LinkList\LinkList.cpp D:\LinkList\LinkList.h \
  C:/msys64/mingw32/include/stdio.h \
  C:/msys64/mingw32/include/corecrt_stdio_config.h \
  C:/msys64/mingw32/include/corecrt.h C:/msys64/mingw32/include/_mingw.h \
@@ -25,9 +25,27 @@ LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.obj: \
  C:/msys64/mingw32/lib/gcc/i686-w64-mingw32/15.1.0/include/mm_malloc.h \
  C:/msys64/mingw32/include/errno.h \
  C:/msys64/mingw32/include/c++/15.1.0/bits/std_abs.h \
- C:/msys64/mingw32/include/string.h \
- C:/msys64/mingw32/include/sec_api/string_s.h \
  C:/msys64/mingw32/lib/gcc/i686-w64-mingw32/15.1.0/include/stdint.h \
  C:/msys64/mingw32/include/stdint.h \
  C:/msys64/mingw32/lib/gcc/i686-w64-mingw32/15.1.0/include/stddef.h \
- C:/msys64/mingw32/include/stddef.h
+ C:/msys64/mingw32/include/stddef.h \
+ C:/msys64/mingw32/include/c++/15.1.0/functional \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/stl_function.h \
+ C:/msys64/mingw32/include/c++/15.1.0/backward/binders.h \
+ C:/msys64/mingw32/include/c++/15.1.0/tuple \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/stl_pair.h \
+ C:/msys64/mingw32/include/c++/15.1.0/type_traits \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/version.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/move.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/utility.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/uses_allocator.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/invoke.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/functional_hash.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/hash_bytes.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/refwrap.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/std_function.h \
+ C:/msys64/mingw32/include/c++/15.1.0/new \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/exception.h \
+ C:/msys64/mingw32/include/c++/15.1.0/typeinfo \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/functexcept.h \
+ C:/msys64/mingw32/include/c++/15.1.0/bits/exception_defines.h
