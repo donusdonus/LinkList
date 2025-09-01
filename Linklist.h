@@ -11,28 +11,40 @@ using namespace std;
 //#define ARCH_16Bit
 #define ARCH_32Bit
 
-
 /* Edit Memory Source Area */
 /* RAM TYPE */
 #define _TYPE_RAM 0 
 /* PSRAM TYPE */
 #define _TYPE_PSRAM 1
 
-
 enum MemorySource
 {
     RAM=_TYPE_RAM,PSRAM=_TYPE_PSRAM
 };
 
+enum ListFlagMark
+{
+    /* 
+        When never has event Free address value in list must not Free member value. !!! 
+    */
+    bit_user_manage_address = 0
+
+};
+
+
+#pragma pack(push,1)
 template<typename T>
 struct Items
 {
     public:
     T *item;
+    uint8_t flag;
     Items* _next;
     Items* _prev;
 };
+#pragma pack(pop)
 
+#define sssss sizeof(Items<T>)
 
 template<typename T>
 class LinkList
@@ -40,9 +52,11 @@ class LinkList
 private:
     /* data */
     MemorySource MemSource;
-    typedef void (*filter)(T*);
-    typedef std::function<void (T*)> func_filter;
+    typedef std::function<void (T*,size_t)> func_filter;
+    size_t limit_member = 0;
+    size_t total_member = 0;
 
+    Items<T> *Lists = nullptr;
 
     /* private function */
 
@@ -74,6 +88,7 @@ private:
         if(available(prev))
             (*next)->_prev = *prev;
                  
+        total_member += 1;
         return true;
     }
 
@@ -163,10 +178,9 @@ private:
     }
 
 public:
-    Items<T> *Lists = nullptr;
 
-    LinkList(){SetMemory(MemorySource::RAM);}
-    LinkList(MemorySource type = MemorySource::RAM){SetMemory(type);}
+    LinkList(size_t size=0){SetMemory(MemorySource::RAM);}
+    LinkList(MemorySource type = MemorySource::RAM,size_t size=0){SetMemory(type);limit_member = size;}
     ~LinkList(){ Clear(); }
 
     void SetMemory(MemorySource type)
@@ -176,8 +190,14 @@ public:
 
     bool Add(T data)
     {
+        /* 
+            insert data to lists by value.
+            data will insert new address. 
+        */
         Items<T>* tmp = nullptr;
 
+        if((limit_member > 0) && (limit_member == total_member))
+            return false;
 
         tmp = (Items<T>*)Allocator(MemSource,1,sizeof(Items<T>));
         if(tmp == nullptr)
@@ -194,25 +214,44 @@ public:
         return Add(tmp);
     }
 
+    /* 
+        insert data to lists by reference pointer.
+        data is not copy value. 
+        but reference pointer address.
+    */
     bool Add(T *data)
     {
         Items<T>* tmp = nullptr;
+
+        if((limit_member > 0) && (limit_member == total_member))
+            return false;
+
         tmp = (Items<T>*)Allocator(MemSource,1,sizeof(Items<T>));
         if(tmp == nullptr)
             return false;
 
         tmp->item = data;
 
+        tmp->flag |= (1<<ListFlagMark::bit_user_manage_address);
         return Add(tmp);
     }
 
+    /* 
+        count member of list
+    */
     size_t Count()
     {
-        return count_member(&Lists);
+        return  total_member ; //count_member(&Lists);
     }
 
+    /* 
+        get size of memory in list
+    */
     size_t Size(){ return Count()*sizeof(Items<T>);}
 
+    /* 
+        Remote member in lists by index
+    */
     bool Remove(size_t index)
     {
         Items<T>** cur = &Lists;
@@ -249,7 +288,9 @@ public:
         // case last
         if(available(&prev) && !available(&next))
         {
+            if(((*cur)->flag & (1<<ListFlagMark::bit_user_manage_address)) == 0)            
                Free((*cur)->item);
+
                (*cur)->item = nullptr;
                (*cur)->_next = nullptr;
                (*cur)->_prev = nullptr;
@@ -261,7 +302,9 @@ public:
         // case mid
         else if(available(&prev) && available(&next))
         {
+            if(((*cur)->flag & (1<<ListFlagMark::bit_user_manage_address)) == 0)
                Free((*cur)->item);
+
                (*cur)->item = nullptr;
                (*cur)->_next = nullptr;
                (*cur)->_prev = nullptr;
@@ -271,10 +314,13 @@ public:
                prev->_next = next;
                next->_prev = prev;
         }
+        
         // case first
         else if(!available(&prev) && available(&next))
         {
+             if((Lists->flag & (1<<ListFlagMark::bit_user_manage_address)) == 0)
                Free(&Lists->item);
+
                Lists->item = nullptr;
                Lists->_next = nullptr;
                Lists->_prev = nullptr;
@@ -287,9 +333,20 @@ public:
             return false;
         }
 
+        total_member-=1;
         return true;
     }
 
+    /*
+       operator [] is not safety memory.
+       exam in bad case assign value.
+          *obj[10] = value ; when obj[10] = nullptr
+
+       please check nullptr first before modify value.
+       exam in good case assign value.
+          if(*obj[10] != nullptr)
+                obj[10] = value;
+    */
     T* operator[](size_t index) 
     {
         Items<T>** tmp = &Lists; 
@@ -312,18 +369,33 @@ public:
         return nullptr;
     }
 
+    /*
+       Find item in list by assign function pointer
+       exam x[0]=2 , x[1]=100 , x[2]=14 
+       assume filter data as 100.
+       
+       x.Find([](int *data,size_t index){     
+            if(*data == 100)
+                dosomething;
+       });
+    */
     void Find(func_filter filter = nullptr)
     {
+        size_t index = 0;
         Items<T>** cur = &Lists;   
         while (available(cur))
         {
             if(filter != nullptr)
-                filter((*cur)->item);
+                filter((*cur)->item,index);
                // func((*cur)->item);
             cur = &(*cur)->_next;
+            index+=1;
         }  
     }
 
+    /* 
+        Reject all member in list
+    */
     void Clear()
     {
         Items<T>** cur = &Lists;
@@ -334,12 +406,15 @@ public:
             del = cur;
             cur = &(*cur)->_next;
             
-            Free((*del)->item);
+            if(((*del)->flag & (1<<ListFlagMark::bit_user_manage_address)) == 0)
+                Free((*del)->item);
+
             (*del)->item = nullptr;
             (*del)->_next = nullptr;
             (*del)->_prev = nullptr;
             Free(*del);
             *del = nullptr;     
+            total_member-=1;
         } 
     }
     

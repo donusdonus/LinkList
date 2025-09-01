@@ -1,6 +1,5 @@
 #include "LinkList.h"
-LinkList<char> item(MemorySource::RAM);
-LinkList<LinkList<char>> a(MemorySource::RAM);
+LinkList<char> item(MemorySource::RAM,2);
 
 
 Items<char> hell;
@@ -23,10 +22,13 @@ int main()
 
    for(auto s : msg)
    {
-      item.Add(s);    
+      printf("Push Data Return : %d \n",item.Add(s));     
    }
 
-   item.Find([](char *data){
+
+   *item[0] = 2;
+
+   item.Find([](char *data,size_t index){
 
       if(*data == 'B')
          printf("Found %c in Item\n",*data);   
