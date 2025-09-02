@@ -6,7 +6,7 @@ Items<char> hell;
 
 #define dddd sizeof(hell)
 
-const char msg[] = "ABCBDBE";
+const char msg[] = "ABCDEFGHIJKLMONPQRSTUVWXYZ";
 
 /*
 void findchar(char *data)
