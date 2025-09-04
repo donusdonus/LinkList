@@ -53,6 +53,7 @@ private:
     /* data */
     MemorySource MemSource;
     typedef std::function<void (T*,size_t)> func_filter;
+    typedef std::function<void (T*,size_t,void*)> func_filter_with_arg;
     size_t limit_member = 0;
     size_t total_member = 0;
 
@@ -390,6 +391,21 @@ public:
                // func((*cur)->item);
             cur = &(*cur)->_next;
             index+=1;
+        }  
+    }
+
+    void Find(func_filter_with_arg filter ,void *arg = nullptr)
+    {
+        size_t index = 0;
+        Items<T>** cur = &Lists;   
+        while (available(cur))
+        {
+            if(filter != nullptr)
+                filter((*cur)->item,index,arg);
+               // func((*cur)->item);
+            cur = &(*cur)->_next;
+            index+=1;
+
         }  
     }
 

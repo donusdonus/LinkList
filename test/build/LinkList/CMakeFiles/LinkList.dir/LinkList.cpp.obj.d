@@ -1,5 +1,5 @@
 LinkList/CMakeFiles/LinkList.dir/LinkList.cpp.obj: \
- D:\LinkList\LinkList.cpp D:\LinkList\LinkList.h \
+ C:\Users\ToonA\LinkList\LinkList.cpp C:\Users\ToonA\LinkList\LinkList.h \
  C:/msys64/mingw32/include/stdio.h \
  C:/msys64/mingw32/include/corecrt_stdio_config.h \
  C:/msys64/mingw32/include/corecrt.h C:/msys64/mingw32/include/_mingw.h \

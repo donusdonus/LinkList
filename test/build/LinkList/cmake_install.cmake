@@ -1,4 +1,4 @@
-# Install script for directory: D:/LinkList
+# Install script for directory: C:/Users/ToonA/LinkList
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,6 +40,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/LinkList/test/build/LinkList/install_local_manifest.txt"
+  file(WRITE "C:/Users/ToonA/LinkList/test/build/LinkList/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
